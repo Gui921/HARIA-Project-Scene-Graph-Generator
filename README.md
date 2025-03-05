@@ -1,9 +1,7 @@
 # SGG for the HARIA Project
 
-## Dataset
-*(Copied from the original [github repo](https://github.com/guanw-pku/OED))*
-### Data preperation
-We use the dataset Action Genome to train/evaluate our method. 
+## Data preperation
+Just like the authors of the original repo, we used the dataset Action Genome to evaluate our framework. 
 Please process the downloaded dataset with the [Toolkit](https://github.com/JingweiJ/ActionGenome) and put the processed annotation [files](https://drive.google.com/drive/folders/1tdfAyYm8GGXtO2okAoH1WgVHVOTl1QYe?usp=share_link) with COCO style into `annotations` folder. 
 The directories of the dataset should look like:
 ```
@@ -16,23 +14,23 @@ The directories of the dataset should look like:
     |-- videos        # original videos
 ```
 
-## Evaluation
-*(Copied from the original [github repo](https://github.com/guanw-pku/OED))*
+## How to run
 
-Please download the [checkpoints](https://drive.google.com/drive/folders/12zh9ocGmbV8aOFPzUfp8ezP0pMTlpzJl?usp=sharing) used in the paper and put it into `exps` folder.
-You can use the scripts below to evaluate the performance of OED.
+**Please download the [checkpoints](https://drive.google.com/drive/folders/12zh9ocGmbV8aOFPzUfp8ezP0pMTlpzJl?usp=sharing) used in the paper and put it into `/exps` folder.**
 
-In order to reduce the training cost, we firstly train the spatial module and then train the temporal module after loading trained spatial paramters.
-+ For SGDET task
-```
-python scripts/eval_spatial_sgdet.py   # spatial module
-python scripts/eval_temporal_sgdet.py  # temporal module
-```
-+ For PredCLS task
-```
-python scripts/eval_spatial_predcls.py   # spatial module
-python scripts/eval_temporal_predcls.py  # temporal module
-```
+After downloading the checkpoints, one can run it simply by running the following command line:
+
+`python run.py`
+
+The script has the following arguments:
+
+`--data_nr` Index of the data sample to process - default = 30
+
+`--filter_rate` Filter rate threshold - default = 4.5
+
+`--file` Image file path
+
+## Model Performance:
 
 | Task    | Module |W/R@10|W/R@20|W/R@50|N/R@10|N/R@20|N/R@50|weight|
 |:-------:|:------:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
